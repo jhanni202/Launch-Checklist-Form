@@ -1,16 +1,4 @@
-// Write your JavaScript code here!
 
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ol>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ol>
-<img src="${}">
-*/
 window.addEventListener("load", function(){
    let pilotName = document.getElementById("pilotName");
    let copilotName = document.getElementById("copilotName");
@@ -46,12 +34,9 @@ window.addEventListener("load", function(){
             <li>Distance from Earth: ${data[rVal].distance} </li>
             <li>Number of Moons: ${data[rVal].moons} </li>
          </ol>
-         <img src="${data[rVal].image}">
-      
-     `  
-     
+         <img src="${data[rVal].image}"> 
+     `   
    });
-
 
    planetButton.addEventListener("click",function(event){
       event.preventDefault();
@@ -73,39 +58,34 @@ window.addEventListener("load", function(){
                <li>Number of Moons: ${data[sVal].moons} </li>
             </ol>
             <img src="${data[sVal].image}">
-         
-        `  
-        
-      });
-
-      
+        `     
+      });  
    });
    
    
-
    launchForm.addEventListener("submit",function(event){
       event.preventDefault();
-      if (pilotName.value === ""){
-         alert("All Fields are Required Yo! Go back and fix it!");
+      if (pilotName.value === "" || isNaN(pilotName.value)===false){
+         alert("Pilot name is Required Yo!, and it can't be a number. Go back and fix it!");
        } else {
           pilotStatus.innerHTML = `${pilotName.value} is Ready!`;
        };
 
-      if (copilotName.value === ""){
-         alert("All Fields are Required Yo! Go back and fix it!");
+      if (copilotName.value === "" || isNaN(copilotName.value)===false){
+         alert("Copilot name is Required Yo!, and it can't be a number. Go back and fix it!");
       } else {
          copilotStatus.innerHTML = `${copilotName.value} is Ready!`;
       };
 
       if (fuelLevel.value === ""){
-         alert("All Fields are Required Yo! Go back and fix it!");
+         alert("Fuel Level fields are Required Yo! Go back and fix it!");
       } else if (fuelLevel.value < 10000){
          fuelStatus.innerHTML = "There is not enough fuel for the journey";
          launchStatus.innerHTML = "Shuttle not ready for launch";
       };
 
       if (cargoMass.value === ""){
-         alert("All Fields are Required Yo! Go back and fix it!");
+         alert("Cargo Mass Field is Required Yo! Go back and fix it!");
       } else if (cargoMass.value > 10000){
          cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
       };
@@ -119,10 +99,5 @@ window.addEventListener("load", function(){
          launchStatus.innerHTML = "Shuttle is ready for launch";
          faultyItems.style.visibility = "Hidden";
       };
-
-
-
    });
-   
-
 });
